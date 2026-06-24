@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sovrinte offline communications — text and voice without a tower</title>
+<meta name="description" content="How Sovrinte uses your phone's radio and Bluetooth to carry text and voice when there's no signal. Realistic range numbers on iPhone, Pixel, and Galaxy flagships." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="/css/sovrinte.css" />
+</head>
+<body class="antialiased">
+
+<nav class="fixed top-0 left-0 right-0 z-50 bg-ember-bone/85 backdrop-blur-md border-b border-ember-dark/10">
+  <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+    <a href="/" class="wordmark text-2xl text-ember-dark">Sovrinte</a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-ember-dark/80">
+      <a href="/" class="hover:text-ember-copper transition">Home</a>
+      <a href="/docs/" class="hover:text-ember-copper transition">Docs</a>
+      <a href="/#price" class="hover:text-ember-copper transition">Price</a>
+      <a href="/#price" class="btn-primary !py-2 !px-4 text-sm">Pre-order — $149</a>
+    </div>
+    <a href="/#price" class="md:hidden btn-primary !py-2 !px-4 text-sm">$149</a>
+  </div>
+</nav>
+
+<header class="pt-40 pb-12 md:pb-20 ember-grain">
+  <div class="max-w-5xl mx-auto px-6">
+    <p class="eyebrow text-ember-copper mb-6">Docs · 02 Offline communications</p>
+    <h1 class="display text-5xl md:text-7xl text-ember-dark mb-8 max-w-3xl">
+      Talk and text when there's no tower.
+    </h1>
+    <p class="text-lg md:text-xl text-ember-ink/80 leading-relaxed max-w-2xl">
+      The problem: your phone has a radio and a Bluetooth chip that don't stop working when the cell network does. Sovrinte uses both. The result: text and voice between Sovrinte users without anyone's infrastructure in between.
+    </p>
+  </div>
+</header>
+
+<section class="py-16 md:py-20 bg-ember-bone">
+  <div class="max-w-5xl mx-auto px-6">
+    <p class="eyebrow text-ember-copper mb-4">The problem</p>
+    <h2 class="display text-3xl md:text-5xl text-ember-dark mb-6 max-w-3xl">
+      You and your party are within a kilometer of each other. None of you have signal. Now what?
+    </h2>
+    <p class="text-lg text-ember-ink/85 leading-relaxed max-w-3xl">
+      Backcountry hikers. Sailors in a flotilla. A van-life convoy crossing a dead zone. A family at a festival. Half the people you need to reach are within walking distance — and your phone tells you you're alone because there's no tower. That's the gap Sovrinte's comms layer closes.
+    </p>
+  </div>
+</section>
+
+<section class="py-16 md:py-24 bg-ember-paper">
+  <div class="max-w-6xl mx-auto px-6">
+    <p class="eyebrow text-ember-copper mb-4">The capability</p>
+    <h2 class="display text-3xl md:text-5xl text-ember-dark mb-12 max-w-3xl">
+      Three radios, one app, one experience.
+    </h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="cap-card">
+        <p class="eyebrow text-ember-teal mb-3">Bluetooth Low Energy</p>
+        <h3 class="display text-2xl text-ember-dark mb-3">Up close. Always on.</h3>
+        <p class="text-ember-ink/80 text-sm leading-relaxed">Auto-discovers nearby Sovrinte phones. Text instantly. Voice on a held-button (walkie-talkie). Background drain is negligible.</p>
+      </div>
+      <div class="cap-card">
+        <p class="eyebrow text-ember-teal mb-3">Phone-to-phone radio (P2P Wi-Fi)</p>
+        <h3 class="display text-2xl text-ember-dark mb-3">Distance and voice quality.</h3>
+        <p class="text-ember-ink/80 text-sm leading-relaxed">Higher bandwidth and longer reach than BT. Falls back automatically when devices are mid-range. Voice calls sound like calls, not radio chatter.</p>
+      </div>
+      <div class="cap-card">
+        <p class="eyebrow text-ember-teal mb-3">Mesh relay</p>
+        <h3 class="display text-2xl text-ember-dark mb-3">Reach beyond direct line-of-sight.</h3>
+        <p class="text-ember-ink/80 text-sm leading-relaxed">Every Sovrinte phone acts as a repeater. Five phones spread along a ridge let two distant phones still talk through the chain — no extra hardware needed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 md:py-24 bg-ember-bone">
+  <div class="max-w-5xl mx-auto px-6">
+    <p class="eyebrow text-ember-copper mb-4">The numbers</p>
+    <h2 class="display text-3xl md:text-5xl text-ember-dark mb-6 max-w-3xl">
+      How far the radios reach on a current-generation flagship.
+    </h2>
+    <p class="text-ember-ink/85 leading-relaxed mb-10 max-w-3xl">
+      These are working estimates based on the radio specs in shipping flagship phones and real-world testing in similar mesh networks (Bluetooth 5.x, Wi-Fi Aware, Wi-Fi Direct). Open line-of-sight numbers are the upper bound. Indoor and obstructed environments will be lower — sometimes a lot lower.
+    </p>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm border-collapse">
+        <thead>
+          <tr class="border-b-2 border-ember-dark/20">
+            <th class="text-left py-3 px-3 eyebrow text-ember-copper">Device class</th>
+            <th class="text-left py-3 px-3 eyebrow text-ember-copper">Direct BT</th>
+            <th class="text-left py-3 px-3 eyebrow text-ember-copper">Direct Wi-Fi P2P</th>
+            <th class="text-left py-3 px-3 eyebrow text-ember-copper">Indoor / obstructed</th>
+          </tr>
+        </thead>
+        <tbody class="text-ember-ink/85 align-top">
+          <tr class="border-b border-ember-dark/10">
+            <td class="py-4 px-3 font-semibold">iPhone 15 / 16 / 17</td>
+            <td class="py-4 px-3">~100–250 m<br/><span class="text-xs text-ember-stone">~330–820 ft</span></td>
+            <td class="py-4 px-3">~200–500 m<br/><span class="text-xs text-ember-stone">~660–1,640 ft</span></td>
+            <td class="py-4 px-3">~20–40 m<br/><span class="text-xs text-ember-stone">~65–130 ft</span></td>
+          </tr>
+          <tr class="border-b border-ember-dark/10">
+            <td class="py-4 px-3 font-semibold">Pixel 9 / 10 / 10 XL</td>
+            <td class="py-4 px-3">~100–250 m<br/><span class="text-xs text-ember-stone">~330–820 ft</span></td>
+            <td class="py-4 px-3">~200–500 m<br/><span class="text-xs text-ember-stone">~660–1,640 ft</span></td>
+            <td class="py-4 px-3">~20–40 m<br/><span class="text-xs text-ember-stone">~65–130 ft</span></td>
+          </tr>
+          <tr class="border-b border-ember-dark/10">
+            <td class="py-4 px-3 font-semibold">Galaxy S24 / S25 / S26</td>
+            <td class="py-4 px-3">~100–300 m<br/><span class="text-xs text-ember-stone">~330–985 ft</span></td>
+            <td class="py-4 px-3">~200–600 m<br/><span class="text-xs text-ember-stone">~660–1,970 ft</span></td>
+            <td class="py-4 px-3">~20–50 m<br/><span class="text-xs text-ember-stone">~65–165 ft</span></td>
+          </tr>
+          <tr>
+            <td class="py-4 px-3 font-semibold">Older flagships (3+ yrs)</td>
+            <td class="py-4 px-3">~50–150 m<br/><span class="text-xs text-ember-stone">~165–490 ft</span></td>
+            <td class="py-4 px-3">~100–300 m<br/><span class="text-xs text-ember-stone">~330–985 ft</span></td>
+            <td class="py-4 px-3">~15–30 m<br/><span class="text-xs text-ember-stone">~50–100 ft</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="mt-6 text-sm text-ember-stone max-w-3xl">
+      Mesh relay extends practical reach by chaining: five phones spaced along a ridge can carry a message 1–2 km / 0.6–1.2 mi end-to-end. Twenty phones at a campground or festival can blanket the whole site.
+    </p>
+  </div>
+</section>
+
+<section class="py-16 md:py-24 bg-ember-paper">
+  <div class="max-w-5xl mx-auto px-6">
+    <p class="eyebrow text-ember-copper mb-4">What it feels like</p>
+    <h2 class="display text-3xl md:text-5xl text-ember-dark mb-8 max-w-3xl">
+      The cell bars are gone. The app says "4 connected."
+    </h2>
+    <div class="space-y-6 text-lg text-ember-ink/85 leading-relaxed max-w-3xl">
+      <p>
+        You drop into a canyon. The bars vanish. Normally that's the moment your party becomes invisible to each other. With Sovrinte, you look at the comms screen and four green dots are still there — your spouse, your two friends, the guide. Live, in range.
+      </p>
+      <p>
+        You text "found the ridge — beautiful." Instant. You hold the call button and say "everyone good?" Voice comes back in a couple of seconds — not crystal-clear like LTE, but understandable. Walkie-talkie quality on demand.
+      </p>
+      <p>
+        Forty minutes later your spouse hikes about a kilometer (~0.6 mi) further down the canyon. Their dot goes from green ("live") to grey ("last seen 10 minutes ago, 940 m / 0.58 mi east"). The mesh layer keeps relaying their last-known position through the other phones in your party. You always know where they were a few minutes ago, even when you can't hear them right now.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 md:py-24 bg-ember-bone">
+  <div class="max-w-5xl mx-auto px-6">
+    <p class="eyebrow text-ember-copper mb-4">Honest limits</p>
+    <h2 class="display text-3xl md:text-5xl text-ember-dark mb-6 max-w-3xl">
+      What this isn't.
+    </h2>
+    <ul class="space-y-4 text-lg text-ember-ink/85 leading-relaxed max-w-3xl list-disc pl-6">
+      <li><strong>Not satellite.</strong> If you're truly remote with no other Sovrinte phones in range, this layer can't reach a tower. Carry an inReach, ZOLEO, or Bivy Stick for SOS to the outside world.</li>
+      <li><strong>Not a substitute for licensed radio in critical use.</strong> Search-and-rescue teams should keep their HAM/VHF. Sovrinte complements that gear, doesn't replace it.</li>
+      <li><strong>Range is variable.</strong> Trees, walls, fog, body water, and your phone's case affect how far the radios reach. Bring the numbers in the table down 30–50% for honest planning.</li>
+      <li><strong>Battery cost is real.</strong> Active comms use ~5–10% battery per hour. Carry a power bank for multi-day trips.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="py-16 md:py-24 bg-ember-dark text-ember-bone text-center">
+  <div class="max-w-3xl mx-auto px-6">
+    <p class="display text-4xl md:text-6xl mb-6">Tower-less. Tower-free.</p>
+    <p class="text-ember-bone/85 text-lg mb-10">Be reachable to the people you care about, without depending on the people who own the network.</p>
+    <a href="/#price" class="inline-block bg-ember-copper hover:bg-ember-ember text-ember-bone px-10 py-5 text-lg font-semibold tracking-wide transition rounded-sm">
+      Pre-order Sovrinte — $149
+    </a>
+    <p class="mt-6 text-ember-stone text-sm"><a href="/docs/" class="hover:text-ember-bone transition">← Back to docs</a></p>
+  </div>
+</section>
+
+<footer class="bg-ember-dark text-ember-bone/60 py-8 text-sm">
+  <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between gap-3">
+    <div>Sovrinte <span class="text-ember-copper">(sov-rin-tee)</span> · Synthetic intelligence for nomads · Built for offline.</div>
+    <div class="space-x-6">
+      <a href="/" class="hover:text-ember-copper transition">Home</a>
+      <a href="/docs/" class="hover:text-ember-copper transition">Docs</a>
+      <a href="mailto:hello@sovrinte.ai" class="hover:text-ember-copper transition">Contact</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

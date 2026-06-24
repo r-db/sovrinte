@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Sovrinte app — what it looks like on your phone</title>
+<meta name="description" content="A walk-through of the four screens you'll live in: home, agent, mesh map, library. The actual interface logic." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="/css/sovrinte.css" />
+<style>
+  /* Mockup-specific UI tiles inside phone screens */
+  .mock-statusbar { display:flex; justify-content:space-between; padding:0.5rem 1rem 0.25rem; font-size:0.65rem; color:#1A1410; font-weight:600; }
+  .mock-tile { background: rgba(26,20,16,0.04); border:1px solid rgba(26,20,16,0.08); border-radius:14px; padding:0.85rem 1rem; }
+  .mock-message-user { background:#1A1410; color:#F5EFE6; border-radius:18px 18px 4px 18px; padding:0.65rem 0.9rem; max-width:78%; margin-left:auto; font-size:0.78rem; line-height:1.35; }
+  .mock-message-agent { background:#EFE6D8; color:#1A1410; border-radius:18px 18px 18px 4px; padding:0.65rem 0.9rem; max-width:82%; font-size:0.78rem; line-height:1.35; border:1px solid rgba(26,20,16,0.06); }
+  .mock-list-row { display:flex; align-items:center; gap:0.65rem; padding:0.55rem 0.75rem; border-bottom:1px solid rgba(26,20,16,0.06); font-size:0.78rem; }
+  .mock-dot { width:8px; height:8px; border-radius:999px; flex-shrink:0; }
+  .mock-icon-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0.5rem; padding:0.75rem; }
+  .mock-app-tile { aspect-ratio:1; border-radius:12px; background: linear-gradient(145deg, rgba(255,255,255,0.7), rgba(255,255,255,0.4)); border:1px solid rgba(26,20,16,0.08); }
+  .mock-app-tile.ember {
+    background: linear-gradient(145deg, #2C2118 0%, #1A1410 55%, #0E0906 100%);
+    box-shadow: 0 4px 12px -4px rgba(232,93,44,0.35), inset 0 1px 0 rgba(255,255,255,0.1);
+    display:flex; align-items:center; justify-content:center;
+    color: #E85D2C; font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; font-size:1.4rem;
+  }
+</style>
+</head>
+<body class="antialiased">
+
+<nav class="fixed top-0 left-0 right-0 z-50 bg-ember-bone/85 backdrop-blur-md border-b border-ember-dark/10">
+  <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+    <a href="/" class="wordmark text-2xl text-ember-dark">Sovrinte</a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-ember-dark/80">
+      <a href="/" class="hover:text-ember-copper transition">Home</a>
+      <a href="/docs/" class="hover:text-ember-copper transition">Docs</a>
+      <a href="/#price" class="hover:text-ember-copper transition">Price</a>
+      <a href="/#price" class="btn-primary !py-2 !px-4 text-sm">Pre-order — $149</a>
+    </div>
+    <a href="/#price" class="md:hidden btn-primary !py-2 !px-4 text-sm">$149</a>
+  </div>
+</nav>
+
+<header class="pt-40 pb-12 md:pb-20 ember-grain">
+  <div class="max-w-5xl mx-auto px-6">
+    <p class="eyebrow text-ember-copper mb-6">Docs · 01 The app</p>
+    <h1 class="display text-5xl md:text-7xl text-ember-dark mb-8 max-w-3xl">
+      What the app looks like on your phone.
+    </h1>
+    <p class="text-lg md:text-xl text-ember-ink/80 leading-relaxed max-w-2xl">
+      Four screens. That's it. We didn't bury features under menus or hide them behind paywalls. Open the app, see the four things it does, do them.
+    </p>
+  </div>
+</header>
+
+<section class="py-16 md:py-24 bg-ember-bone">
+  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-start">
+    <div class="flex justify-center">
+      <!-- iPhone variant — Dynamic Island pill notch -->
+      <div class="phone-frame">
+        <div class="phone-screen">
+          <div class="mock-statusbar"><span>9:41</span><span>•••</span></div>
+          <div class="mock-icon-grid">
+            <div class="mock-app-tile"></div>
+            <div class="mock-app-tile"></div>
+            <div class="mock-app-tile"></div>
+            <div class="mock-app-tile"></div>
+            <div class="mock-app-tile"></div>
+            <div class="mock-app-tile ember">S</div>
+            <div class="mock-app-tile"></div>
+            <div class="mock-app-tile"></div>
+            <div class="mock-app-tile"></div>
+            <div class="mock-app-tile"></div>
+            <div class="mock-app-tile"></div>
+            <div class="mock-app-tile"></div>
+          </div>
+          <p class="text-center text-[0.65rem] text-ember-stone mt-2">Sovrinte sits on your home screen like any other app.</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p class="eyebrow text-ember-copper mb-4">Home</p>
+      <h2 class="display text-4xl text-ember-dark mb-6">Where it lives.</h2>
+      <p class="text-ember-ink/85 leading-relaxed mb-6">
+        Sovrinte is one icon on your home screen. Tap it, you're in. No login. No subscription check. No "let me verify your account" round-trip to a server. The app is the icon; the icon is the app.
+      </p>
+      <p class="text-ember-ink/80 leading-relaxed">
+        Everything — the partner, the library, the mesh map, the comms — lives inside that one icon. Other apps pretend to be ecosystems. Sovrinte is a single tool with four sharp edges.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 md:py-24 bg-ember-paper">
+  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-start md:flex-row-reverse">
+    <div class="flex justify-center order-1 md:order-2">
+      <!-- Pixel variant — small punch-hole top center -->
+      <div class="phone-frame pixel">
+        <div class="phone-screen" style="background:#FAFAF7;">
+          <div class="mock-statusbar"><span>9:42</span><span>•••</span></div>
+          <div style="padding:0.75rem 0.65rem 4.5rem 0.65rem; display:flex; flex-direction:column; gap:0.5rem;">
+            <div class="mock-message-agent">Looks like wild parsnip. Don't touch the sap — it photosensitizes skin. Want a safer plant in this area to forage?</div>
+            <div class="mock-message-user">yes, what's edible nearby this time of year</div>
+            <div class="mock-message-agent">Lambsquarter is everywhere here in June. Young leaves taste like spinach. I'll show you the ID markers.</div>
+          </div>
+          <div class="chat-input">
+            <span class="ci-mic" aria-label="Voice">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 14a3 3 0 003-3V7a3 3 0 00-6 0v4a3 3 0 003 3zm5-3a5 5 0 01-10 0H5a7 7 0 006 6.92V21h2v-3.08A7 7 0 0019 11h-2z"/></svg>
+            </span>
+            <span class="ci-pill">Ask anything…</span>
+            <span class="ci-send" aria-label="Send">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor"><path d="M12 4l-1.4 1.4L16.2 11H4v2h12.2l-5.6 5.6L12 20l8-8z"/></svg>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="order-2 md:order-1">
+      <p class="eyebrow text-ember-copper mb-4">Agent</p>
+      <h2 class="display text-4xl text-ember-dark mb-6">A partner you can ask anything.</h2>
+      <p class="text-ember-ink/85 leading-relaxed mb-6">
+        Text or voice. Type a question or hold the mic. The agent runs on your device, so it answers whether you have signal or not — and the question never leaves your phone unless you choose to send it.
+      </p>
+      <p class="text-ember-ink/80 leading-relaxed">
+        Vision is coming next: point your camera at a plant, an animal, a wound, a knot you forgot — get an answer offline. See <a href="/docs/agent.html" class="text-ember-copper underline">the agent docs</a> for more.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 md:py-24 bg-ember-bone">
+  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-start">
+    <div class="flex justify-center">
+      <!-- iPhone variant — Dynamic Island pill notch -->
+      <div class="phone-frame">
+        <div class="phone-screen">
+          <div class="mock-statusbar"><span>9:43</span><span>•••</span></div>
+          <div style="padding:0.5rem;">
+            <p class="text-[0.7rem] font-semibold text-ember-dark px-2 pb-2">Your party · 4 connected</p>
+            <div class="mock-list-row"><span class="mock-dot" style="background:#3A4A3E"></span>Aiden · 84 m / 275 ft NE · live</div>
+            <div class="mock-list-row"><span class="mock-dot" style="background:#3A4A3E"></span>Lena · 210 m / 690 ft W · live</div>
+            <div class="mock-list-row"><span class="mock-dot" style="background:#8C8275"></span>Marco · last seen 2h ago · 1.2 km / 0.75 mi N</div>
+            <div class="mock-list-row" style="border-bottom:0;"><span class="mock-dot" style="background:#E85D2C"></span>Kit · approaching · 320 m / 1,050 ft E</div>
+            <!-- Compass indicator: pointing to selected teammate -->
+            <div style="margin-top:0.65rem; display:flex; justify-content:center;">
+              <div class="compass">
+                <svg viewBox="0 0 60 60" class="compass-dial" aria-hidden="true">
+                  <circle cx="30" cy="30" r="27" fill="none" stroke="rgba(26,20,16,0.15)" stroke-width="1"/>
+                  <text x="30" y="10" text-anchor="middle" font-size="6" fill="#8C8275">N</text>
+                  <text x="30" y="55" text-anchor="middle" font-size="6" fill="#8C8275">S</text>
+                  <text x="6" y="33" text-anchor="middle" font-size="6" fill="#8C8275">W</text>
+                  <text x="54" y="33" text-anchor="middle" font-size="6" fill="#8C8275">E</text>
+                  <g transform="rotate(45 30 30)">
+                    <path d="M30 14 L34.5 30 L30 27 L25.5 30 Z" fill="#E85D2C"/>
+                  </g>
+                </svg>
+                <div class="compass-label">
+                  <span class="heading">Aiden · NE</span>
+                  <span class="dist">84 m / 275 ft</span>
+                </div>
+              </div>
+            </div>
+            <div style="margin-top:0.65rem; padding:0.65rem 0.75rem; background:rgba(44,127,138,0.08); border-radius:14px; font-size:0.68rem; color:#1A1410;">
+              Mesh active · 4 nodes · range extended 950 m / 3,115 ft via relay
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p class="eyebrow text-ember-copper mb-4">Mesh</p>
+      <h2 class="display text-4xl text-ember-dark mb-6">Your party, mapped — without a tower.</h2>
+      <p class="text-ember-ink/85 leading-relaxed mb-6">
+        Every Sovrinte phone within range shows up automatically. Live position when they're close, last-known pin when they've wandered out of range. Tap a name, get a heading to walk back to them.
+      </p>
+      <p class="text-ember-ink/80 leading-relaxed">
+        When the party spreads out, the mesh chains — each phone relays the last position of every other phone it has ever met. See <a href="/docs/mesh.html" class="text-ember-copper underline">the mesh docs</a> for the full grid logic.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 md:py-24 bg-ember-paper">
+  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-start md:flex-row-reverse">
+    <div class="flex justify-center order-1 md:order-2">
+      <!-- Pixel variant — small punch-hole top center -->
+      <div class="phone-frame pixel">
+        <div class="phone-screen" style="background:#FAFAF7;">
+          <div class="mock-statusbar"><span>9:44</span><span>•••</span></div>
+          <div style="padding:0.5rem;">
+            <p class="text-[0.7rem] font-semibold text-ember-dark px-2 pb-2">Library · search anything</p>
+            <div class="mock-list-row">→ Edible plants by region</div>
+            <div class="mock-list-row">→ Water purification (4 methods)</div>
+            <div class="mock-list-row">→ Shelter — tarp &amp; cordage</div>
+            <div class="mock-list-row">→ Knots — clove, bowline, taut-line</div>
+            <div class="mock-list-row">→ Stars, sun &amp; sextant nav</div>
+            <div class="mock-list-row">→ Field medicine</div>
+            <div class="mock-list-row">→ Fishing — bait, line, fillet</div>
+            <div class="mock-list-row">→ Hunting — game, ID, ethics</div>
+            <div class="mock-list-row" style="border-bottom:0;">→ Sailing — points of sail, knots</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="order-2 md:order-1">
+      <p class="eyebrow text-ember-copper mb-4">Library</p>
+      <h2 class="display text-4xl text-ember-dark mb-6">A curated reference shelf.</h2>
+      <p class="text-ember-ink/85 leading-relaxed mb-6">
+        Not the open internet. Not a Wikipedia mirror. A hand-curated library of the things you'd want to know in the field: plants, water, shelter, knots, navigation, field medicine, fishing, hunting, sailing — organized for the moment you need them, not the moment you're bored on the couch.
+      </p>
+      <p class="text-ember-ink/80 leading-relaxed">
+        The agent reads this library to answer your questions. You read it directly when you want depth. Same source, two surfaces.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 md:py-24 bg-ember-dark text-ember-bone text-center">
+  <div class="max-w-3xl mx-auto px-6">
+    <p class="display text-4xl md:text-6xl mb-6">Four screens. One purpose.</p>
+    <p class="text-ember-bone/85 text-lg mb-10">Be capable when nobody else is around to help.</p>
+    <a href="/#price" class="inline-block bg-ember-copper hover:bg-ember-ember text-ember-bone px-10 py-5 text-lg font-semibold tracking-wide transition rounded-sm">
+      Pre-order Sovrinte — $149
+    </a>
+    <p class="mt-6 text-ember-stone text-sm"><a href="/docs/" class="hover:text-ember-bone transition">← Back to docs</a></p>
+  </div>
+</section>
+
+<footer class="bg-ember-dark text-ember-bone/60 py-8 text-sm">
+  <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between gap-3">
+    <div>Sovrinte <span class="text-ember-copper">(sov-rin-tee)</span> · Synthetic intelligence for nomads · Built for offline.</div>
+    <div class="space-x-6">
+      <a href="/" class="hover:text-ember-copper transition">Home</a>
+      <a href="/docs/" class="hover:text-ember-copper transition">Docs</a>
+      <a href="mailto:hello@sovrinte.ai" class="hover:text-ember-copper transition">Contact</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

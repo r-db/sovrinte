@@ -1,0 +1,221 @@
+/* SOVRINTE shared stylesheet — used by landing + all /docs/* pages.
+   Custom CSS rules for the brand palette (Tailwind CDN JIT doesn't pick up
+   the inline theme config reliably; this is the source of truth for color). */
+
+html { scroll-behavior: smooth; }
+body {
+  background: #F5EFE6;
+  color: #1A1410;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Brand palette — explicit CSS rules for custom Tailwind class names */
+.bg-ember-dark   { background-color: #1A1410 !important; }
+.bg-ember-ink    { background-color: #231C18 !important; }
+.bg-ember-bone   { background-color: #F5EFE6 !important; }
+.bg-ember-paper  { background-color: #EFE6D8 !important; }
+.bg-ember-copper { background-color: #E85D2C !important; }
+.bg-ember-ember  { background-color: #D44A1F !important; }
+.bg-ember-teal   { background-color: #2C7F8A !important; }
+.bg-ember-moss   { background-color: #3A4A3E !important; }
+.bg-ember-stone  { background-color: #8C8275 !important; }
+.text-ember-dark   { color: #1A1410 !important; }
+.text-ember-ink    { color: #231C18 !important; }
+.text-ember-bone   { color: #F5EFE6 !important; }
+.text-ember-paper  { color: #EFE6D8 !important; }
+.text-ember-copper { color: #E85D2C !important; }
+.text-ember-teal   { color: #2C7F8A !important; }
+.text-ember-stone  { color: #8C8275 !important; }
+.border-ember-dark { border-color: #1A1410 !important; }
+.border-ember-bone { border-color: #F5EFE6 !important; }
+.bg-ember-bone\/85 { background-color: rgba(245,239,230,0.85) !important; }
+.bg-ember-dark\/55 { background-color: rgba(26,20,16,0.55) !important; }
+.bg-ember-dark\/80 { background-color: rgba(26,20,16,0.80) !important; }
+.text-ember-bone\/60 { color: rgba(245,239,230,0.60) !important; }
+.text-ember-bone\/80 { color: rgba(245,239,230,0.80) !important; }
+.text-ember-bone\/85 { color: rgba(245,239,230,0.85) !important; }
+.text-ember-bone\/90 { color: rgba(245,239,230,0.90) !important; }
+.text-ember-ink\/80 { color: rgba(35,28,24,0.80) !important; }
+.text-ember-ink\/85 { color: rgba(35,28,24,0.85) !important; }
+.text-ember-dark\/10 { color: rgba(26,20,16,0.10) !important; }
+.text-ember-dark\/80 { color: rgba(26,20,16,0.80) !important; }
+.border-ember-dark\/10 { border-color: rgba(26,20,16,0.10) !important; }
+.border-ember-dark\/15 { border-color: rgba(26,20,16,0.15) !important; }
+.border-ember-dark\/20 { border-color: rgba(26,20,16,0.20) !important; }
+.border-ember-bone\/15 { border-color: rgba(245,239,230,0.15) !important; }
+.border-ember-bone\/20 { border-color: rgba(245,239,230,0.20) !important; }
+.hover\:bg-ember-copper:hover { background-color: #E85D2C !important; }
+.hover\:bg-ember-ember:hover  { background-color: #D44A1F !important; }
+.hover\:text-ember-copper:hover { color: #E85D2C !important; }
+
+/* Typography */
+.display { font-family: 'DM Serif Display', Georgia, serif; line-height: 0.95; letter-spacing: -0.02em; }
+.eyebrow { font-family: 'Inter', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.72rem; }
+.wordmark { font-family: 'Plus Jakarta Sans', 'Canva Sans', system-ui, sans-serif; font-weight: 800; letter-spacing: -0.03em; }
+
+/* Page texture */
+.ember-grain {
+  background-image:
+    radial-gradient(ellipse at 30% 20%, rgba(232,93,44,0.08), transparent 60%),
+    radial-gradient(ellipse at 80% 80%, rgba(44,127,138,0.06), transparent 60%);
+}
+
+/* CTA buttons */
+.btn-primary {
+  background: #1A1410; color: #F5EFE6; padding: 1rem 1.75rem;
+  font-weight: 600; letter-spacing: 0.02em; border-radius: 2px;
+  transition: background 200ms, transform 200ms;
+  display: inline-block;
+}
+.btn-primary:hover { background: #E85D2C; transform: translateY(-1px); }
+.btn-ghost {
+  background: transparent; color: #1A1410; padding: 1rem 1.75rem;
+  font-weight: 500; border: 1.5px solid #1A1410; border-radius: 2px;
+  transition: background 200ms, color 200ms;
+  display: inline-block;
+}
+.btn-ghost:hover { background: #1A1410; color: #F5EFE6; }
+
+/* App icon — dark chrome rounded square with copper glow */
+.app-icon {
+  position: relative;
+  width: 168px;
+  height: 168px;
+  border-radius: 38px;
+  background:
+    radial-gradient(at 28% 22%, rgba(255,255,255,0.16), transparent 60%),
+    linear-gradient(145deg, #2C2118 0%, #1A1410 55%, #0E0906 100%);
+  box-shadow:
+    0 30px 70px -18px rgba(0,0,0,0.55),
+    0 10px 30px -10px rgba(232,93,44,0.30),
+    inset 0 1px 0 rgba(255,255,255,0.12),
+    inset 0 -1px 0 rgba(0,0,0,0.45),
+    inset 0 0 0 1px rgba(255,255,255,0.04);
+  display: flex; align-items: center; justify-content: center;
+}
+.app-icon::before {
+  content: ""; position: absolute; inset: 1px; border-radius: 37px;
+  background: linear-gradient(150deg, rgba(255,255,255,0.07), transparent 38%);
+  pointer-events: none;
+}
+.app-icon::after {
+  content: ""; position: absolute; left: 50%; bottom: -22px;
+  transform: translateX(-50%); width: 78%; height: 22px;
+  background: radial-gradient(ellipse, rgba(232,93,44,0.30), transparent 70%);
+  filter: blur(8px); pointer-events: none;
+}
+.app-icon .glyph {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800; font-size: 5.25rem; line-height: 1;
+  letter-spacing: -0.04em; margin-top: -0.05em;
+  background: linear-gradient(180deg, #F5C8A0 0%, #E85D2C 55%, #B33A0F 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 18px rgba(232,93,44,0.45));
+  position: relative; z-index: 1;
+}
+
+/* Platform pills (small badges) */
+.platform-pill {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid rgba(26,20,16,0.18); border-radius: 999px;
+  font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.78rem;
+  letter-spacing: 0.02em; color: #231C18;
+  background: rgba(245,239,230,0.6); backdrop-filter: blur(8px);
+}
+.platform-pill svg { width: 14px; height: 14px; opacity: 0.85; }
+
+/* Landing-specific background-image scenes */
+.img-cover { background-size: cover; background-position: center; }
+.hero-img       { background-image: url('/img/sovrinte-pod.png'); background-position: center; }
+.scene-camp     { background-image: url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=1600&q=80'); }
+.scene-mountain { background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1600&q=80'); }
+.scene-night    { background-image: url('/img/sovrinte-runner.png'); }
+.scene-trail    { background-image: url('https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=1600&q=80'); }
+
+/* Phone mockup — generic shell; variants distinguish iPhone vs Pixel subtly */
+.phone-frame {
+  position: relative;
+  width: 280px; height: 580px;
+  border-radius: 44px;
+  background: linear-gradient(150deg, #2A2118, #0E0906);
+  padding: 12px;
+  box-shadow:
+    0 40px 80px -20px rgba(0,0,0,0.45),
+    0 10px 30px -10px rgba(232,93,44,0.20),
+    inset 0 1px 0 rgba(255,255,255,0.12),
+    inset 0 -1px 0 rgba(0,0,0,0.45);
+}
+/* iPhone variant (default) — Dynamic-Island-style pill notch */
+.phone-frame::before {
+  content: ""; position: absolute; left: 50%; top: 16px;
+  transform: translateX(-50%);
+  width: 92px; height: 26px; border-radius: 999px;
+  background: #0E0906;
+  z-index: 3;
+}
+/* Pixel variant — small centered punch-hole, slightly thinner bezels */
+.phone-frame.pixel { border-radius: 38px; padding: 10px; }
+.phone-frame.pixel::before {
+  width: 12px; height: 12px; top: 14px;
+  background: #050402;
+  box-shadow: 0 0 0 1.5px rgba(255,255,255,0.06), inset 0 0 0 1px rgba(0,0,0,0.6);
+}
+.phone-frame.pixel .phone-screen { border-radius: 30px; }
+.phone-screen {
+  width: 100%; height: 100%; border-radius: 34px;
+  overflow: hidden;
+  background: #F5EFE6;
+  position: relative;
+}
+/* Chat input bar — pinned to bottom of chat-mockup screen */
+.chat-input {
+  position: absolute; left: 8px; right: 8px; bottom: 8px;
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.5rem 0.6rem;
+  background: rgba(255,255,255,0.92);
+  border: 1px solid rgba(26,20,16,0.10);
+  border-radius: 22px;
+  backdrop-filter: blur(8px);
+  font-size: 0.72rem;
+}
+.chat-input .ci-mic, .chat-input .ci-send {
+  width: 24px; height: 24px; flex-shrink: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 999px; color: #1A1410;
+}
+.chat-input .ci-send { background: #1A1410; color: #F5EFE6; }
+.chat-input .ci-pill {
+  flex: 1; color: rgba(26,20,16,0.45);
+  padding: 0.25rem 0;
+}
+/* Compass widget — heading arrow + degree marks + label */
+.compass {
+  display: inline-flex; align-items: center; gap: 0.55rem;
+  padding: 0.45rem 0.6rem 0.45rem 0.45rem;
+  background: rgba(26,20,16,0.04);
+  border: 1px solid rgba(26,20,16,0.08);
+  border-radius: 999px;
+}
+.compass-dial { width: 32px; height: 32px; flex-shrink: 0; }
+.compass-label { font-size: 0.7rem; color: #1A1410; line-height: 1.1; }
+.compass-label .heading { font-weight: 700; }
+.compass-label .dist { color: #8C8275; font-size: 0.62rem; display: block; }
+.compass--dark {
+  background: rgba(245,239,230,0.08);
+  border-color: rgba(245,239,230,0.15);
+}
+.compass--dark .compass-label { color: #F5EFE6; }
+.compass--dark .compass-label .dist { color: rgba(245,239,230,0.55); }
+
+/* Doc-page section card — used for problem→capability framing */
+.cap-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(26,20,16,0.08);
+  border-radius: 4px;
+  padding: 2rem;
+  transition: border-color 200ms, transform 200ms;
+}
+.cap-card:hover { border-color: rgba(232,93,44,0.45); transform: translateY(-2px); }

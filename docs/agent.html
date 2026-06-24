@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Sovrinte agent — an AI partner that fits in your pocket</title>
+<meta name="description" content="A conversational partner trained for the field. Identify a plant, walk through water purification, talk through a decision when nobody else is around." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="/css/sovrinte.css" />
+<style>
+  .chat-bubble-user  { background:#1A1410; color:#F5EFE6; border-radius:18px 18px 4px 18px; padding:0.85rem 1.15rem; max-width:78%; margin-left:auto; font-size:0.95rem; line-height:1.4; }
+  .chat-bubble-agent { background:#FFFFFF; color:#1A1410; border-radius:18px 18px 18px 4px; padding:0.85rem 1.15rem; max-width:82%; font-size:0.95rem; line-height:1.4; border:1px solid rgba(26,20,16,0.08); }
+</style>
+</head>
+<body class="antialiased">
+
+<nav class="fixed top-0 left-0 right-0 z-50 bg-ember-bone/85 backdrop-blur-md border-b border-ember-dark/10">
+  <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+    <a href="/" class="wordmark text-2xl text-ember-dark">Sovrinte</a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-ember-dark/80">
+      <a href="/" class="hover:text-ember-copper transition">Home</a>
+      <a href="/docs/" class="hover:text-ember-copper transition">Docs</a>
+      <a href="/#price" class="hover:text-ember-copper transition">Price</a>
+      <a href="/#price" class="btn-primary !py-2 !px-4 text-sm">Pre-order — $149</a>
+    </div>
+    <a href="/#price" class="md:hidden btn-primary !py-2 !px-4 text-sm">$149</a>
+  </div>
+</nav>
+
+<header class="pt-40 pb-12 md:pb-20 ember-grain">
+  <div class="max-w-5xl mx-auto px-6">
+    <p class="eyebrow text-ember-copper mb-6">Docs · 04 The agent</p>
+    <h1 class="display text-5xl md:text-7xl text-ember-dark mb-8 max-w-3xl">
+      A partner in your pocket. Not a chatbot in the cloud.
+    </h1>
+    <p class="text-lg md:text-xl text-ember-ink/80 leading-relaxed max-w-2xl">
+      The agent runs on your device. Your questions never leave the phone. Your conversations never become training data. And it works in airplane mode — the same way it works on your couch.
+    </p>
+  </div>
+</header>
+
+<section class="py-16 md:py-20 bg-ember-bone">
+  <div class="max-w-5xl mx-auto px-6">
+    <p class="eyebrow text-ember-copper mb-4">The problem</p>
+    <h2 class="display text-3xl md:text-5xl text-ember-dark mb-6 max-w-3xl">
+      Every other AI in your life requires permission from someone else to work.
+    </h2>
+    <p class="text-lg text-ember-ink/85 leading-relaxed max-w-3xl">
+      ChatGPT needs an internet connection and a server farm. Claude wants your conversation. Gemini wants your search history. The moment you're in a place those companies' servers can't reach you, every AI you've been using becomes a brick. The agent inside Sovrinte was built for the opposite assumption: the network is the exception, not the rule.
+    </p>
+  </div>
+</section>
+
+<section class="py-16 md:py-24 bg-ember-paper">
+  <div class="max-w-5xl mx-auto px-6">
+    <p class="eyebrow text-ember-copper mb-4">A conversation, not a tool</p>
+    <h2 class="display text-3xl md:text-5xl text-ember-dark mb-10 max-w-3xl">
+      What asking it something actually feels like.
+    </h2>
+
+    <div class="space-y-3 max-w-2xl mb-12">
+      <div class="chat-bubble-user">i think this water is contaminated. what do i do</div>
+      <div class="chat-bubble-agent">Four field options, fastest to most reliable. Tell me what you have on you — fire, filter, iodine tablets, just a container?</div>
+      <div class="chat-bubble-user">fire and a metal cup</div>
+      <div class="chat-bubble-agent">Then boil. Hard rolling boil for one minute at this elevation (under 6,500 ft), three minutes above. That kills bacteria, viruses, and protozoa — the three things you should worry about from surface water. Let me know when it's cool and I'll walk you through testing for clarity.</div>
+    </div>
+
+    <div class="space-y-3 max-w-2xl mb-12">
+      <div class="chat-bubble-user">what's this plant</div>
+      <div class="chat-bubble-agent">Tap the camera button and point at it — I can identify offline. About 4,000 species in the library. Useful for "edible / poisonous / medicinal" before you touch anything.</div>
+    </div>
+
+    <div class="space-y-3 max-w-2xl">
+      <div class="chat-bubble-user">i don't know if i should turn back. the weather looks weird</div>
+      <div class="chat-bubble-agent">Describe what you're seeing — cloud shape, wind direction, temperature drop, anything on the horizon. I'll walk through what each one usually means in this region this time of year, and you decide.</div>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 md:py-24 bg-ember-bone">
+  <div class="max-w-5xl mx-auto px-6">
+    <p class="eyebrow text-ember-copper mb-4">What it's good at</p>
+    <h2 class="display text-3xl md:text-5xl text-ember-dark mb-10 max-w-3xl">
+      Field questions, decision support, identification, instruction.
+    </h2>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="cap-card">
+        <p class="eyebrow text-ember-teal mb-2">Identification</p>
+        <p class="text-ember-ink/85 text-sm leading-relaxed">Plants (edibility, danger, medicinal use). Animals (track, scat, sign). Knots. Stars. Sail trim. Weather signs. Coming next: vision — point your camera, get an answer offline.</p>
+      </div>
+      <div class="cap-card">
+        <p class="eyebrow text-ember-teal mb-2">Walk-through</p>
+        <p class="text-ember-ink/85 text-sm leading-relaxed">Step-by-step instructions for things you read about once and forgot: filtering water, splinting a finger, setting a tarp, lighting a fire in rain, ferro-rod technique, fillet a fish, dress a deer.</p>
+      </div>
+      <div class="cap-card">
+        <p class="eyebrow text-ember-teal mb-2">Decision support</p>
+        <p class="text-ember-ink/85 text-sm leading-relaxed">"Should I turn back?" "Is this safe to eat?" "Which knot for this load?" It doesn't decide for you — it lays out what experienced people consider, and you call it.</p>
+      </div>
+      <div class="cap-card">
+        <p class="eyebrow text-ember-teal mb-2">Conversation</p>
+        <p class="text-ember-ink/85 text-sm leading-relaxed">For the days when you're solo and the silence gets long. Voice in, voice out, in airplane mode, by a fire, on a boat at anchor. It's there.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 md:py-24 bg-ember-paper">
+  <div class="max-w-5xl mx-auto px-6">
+    <p class="eyebrow text-ember-copper mb-4">What it's not</p>
+    <h2 class="display text-3xl md:text-5xl text-ember-dark mb-8 max-w-3xl">
+      Honest limits.
+    </h2>
+    <ul class="space-y-4 text-lg text-ember-ink/85 leading-relaxed max-w-3xl list-disc pl-6">
+      <li><strong>Not a doctor.</strong> Field medicine guidance is for stabilization until you can reach a real one. For emergencies, the satellite SOS in your inReach or Bivy Stick is the right call.</li>
+      <li><strong>Not omniscient.</strong> Trained for the field, not the whole internet. It will tell you when something is outside its lane.</li>
+      <li><strong>Not pretending to be a person.</strong> It's a tool that converses well. Use it that way.</li>
+      <li><strong>Not sending your conversations anywhere.</strong> The whole point of running on-device is that your questions stay on your device. No telemetry, no training, no "improve our service" toggle that's lying to you.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="py-16 md:py-24 bg-ember-bone">
+  <div class="max-w-5xl mx-auto px-6">
+    <p class="eyebrow text-ember-copper mb-4">Privacy isn't a setting. It's the architecture.</p>
+    <h2 class="display text-3xl md:text-5xl text-ember-dark mb-6 max-w-3xl">
+      The agent works offline because it's not phoning a server. That same fact is why nobody else hears your conversation.
+    </h2>
+    <p class="text-lg text-ember-ink/85 leading-relaxed max-w-3xl">
+      Sovrinte doesn't have a "private mode" switch because there's no mode that isn't private. The intelligence is on your phone. The library is on your phone. The conversation history is on your phone. The day we add a "share to cloud" button (we probably won't), it'll be a button — not the default.
+    </p>
+  </div>
+</section>
+
+<section class="py-16 md:py-24 bg-ember-dark text-ember-bone text-center">
+  <div class="max-w-3xl mx-auto px-6">
+    <p class="display text-4xl md:text-6xl mb-6">An AI you actually own.</p>
+    <p class="text-ember-bone/85 text-lg mb-10">Bought once. Yours forever. Lives in your pocket. Talks back.</p>
+    <a href="/#price" class="inline-block bg-ember-copper hover:bg-ember-ember text-ember-bone px-10 py-5 text-lg font-semibold tracking-wide transition rounded-sm">
+      Pre-order Sovrinte — $149
+    </a>
+    <p class="mt-6 text-ember-stone text-sm"><a href="/docs/" class="hover:text-ember-bone transition">← Back to docs</a></p>
+  </div>
+</section>
+
+<footer class="bg-ember-dark text-ember-bone/60 py-8 text-sm">
+  <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between gap-3">
+    <div>Sovrinte <span class="text-ember-copper">(sov-rin-tee)</span> · Synthetic intelligence for nomads · Built for offline.</div>
+    <div class="space-x-6">
+      <a href="/" class="hover:text-ember-copper transition">Home</a>
+      <a href="/docs/" class="hover:text-ember-copper transition">Docs</a>
+      <a href="mailto:hello@sovrinte.ai" class="hover:text-ember-copper transition">Contact</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

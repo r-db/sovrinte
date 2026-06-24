@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sovrinte mesh navigation — find your people without GPS towers</title>
+<meta name="description" content="Last-known-location pins, auto-discovery on range, and a self-forming peer grid that knows where your party is even when none of you can phone home." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="/css/sovrinte.css" />
+</head>
+<body class="antialiased">
+
+<nav class="fixed top-0 left-0 right-0 z-50 bg-ember-bone/85 backdrop-blur-md border-b border-ember-dark/10">
+  <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+    <a href="/" class="wordmark text-2xl text-ember-dark">Sovrinte</a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-ember-dark/80">
+      <a href="/" class="hover:text-ember-copper transition">Home</a>
+      <a href="/docs/" class="hover:text-ember-copper transition">Docs</a>
+      <a href="/#price" class="hover:text-ember-copper transition">Price</a>
+      <a href="/#price" class="btn-primary !py-2 !px-4 text-sm">Pre-order — $149</a>
+    </div>
+    <a href="/#price" class="md:hidden btn-primary !py-2 !px-4 text-sm">$149</a>
+  </div>
+</nav>
+
+<header class="pt-40 pb-12 md:pb-20 ember-grain">
+  <div class="max-w-5xl mx-auto px-6">
+    <p class="eyebrow text-ember-copper mb-6">Docs · 03 Mesh navigation</p>
+    <h1 class="display text-5xl md:text-7xl text-ember-dark mb-8 max-w-3xl">
+      Find your people. Without anyone's permission.
+    </h1>
+    <p class="text-lg md:text-xl text-ember-ink/80 leading-relaxed max-w-2xl">
+      A self-forming grid of every Sovrinte phone within range. Each phone is a node. Each node knows where every other node was the last time it was seen. The map updates without a tower, a tracker, or an account.
+    </p>
+  </div>
+</header>
+
+<section class="py-16 md:py-20 bg-ember-bone">
+  <div class="max-w-5xl mx-auto px-6">
+    <p class="eyebrow text-ember-copper mb-4">The problem</p>
+    <h2 class="display text-3xl md:text-5xl text-ember-dark mb-6 max-w-3xl">
+      The party split up. You don't know where they are. You can't call to ask.
+    </h2>
+    <p class="text-lg text-ember-ink/85 leading-relaxed max-w-3xl">
+      Hikers separate to scout a route. Sailors anchor different boats in the same cove. Hunters spread out before dawn. A festival crowd disperses. The moment you can't see each other and you can't call each other, the most common question — "where are you right now?" — becomes unanswerable. Sovrinte's mesh layer answers it without needing the network.
+    </p>
+  </div>
+</section>
+
+<section class="py-16 md:py-24 bg-ember-paper">
+  <div class="max-w-6xl mx-auto px-6">
+    <p class="eyebrow text-ember-copper mb-4">How the grid forms</p>
+    <h2 class="display text-3xl md:text-5xl text-ember-dark mb-12 max-w-3xl">
+      A peer network that builds itself the moment two Embers meet.
+    </h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="cap-card">
+        <p class="eyebrow text-ember-teal mb-3">Auto-discovery</p>
+        <h3 class="display text-2xl text-ember-dark mb-3">No pairing. No codes.</h3>
+        <p class="text-ember-ink/80 text-sm leading-relaxed">When two Sovrinte phones come within radio range, they recognize each other automatically. Your party is added to your map. Their party gets added to theirs. No QR codes, no Bluetooth pairing dance.</p>
+      </div>
+      <div class="cap-card">
+        <p class="eyebrow text-ember-teal mb-3">Last-seen persistence</p>
+        <h3 class="display text-2xl text-ember-dark mb-3">A pin that doesn't disappear.</h3>
+        <p class="text-ember-ink/80 text-sm leading-relaxed">When someone moves out of range, their dot turns grey — but the pin stays. You always know where they were last, when they were there, and how to walk back to that spot.</p>
+      </div>
+      <div class="cap-card">
+        <p class="eyebrow text-ember-teal mb-3">Relay chains</p>
+        <h3 class="display text-2xl text-ember-dark mb-3">Every node passes the message.</h3>
+        <p class="text-ember-ink/80 text-sm leading-relaxed">When five party members are spread along a trail, the two end-phones can still see each other through the chain. Each node carries the latest position of every other node it has met.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 md:py-24 bg-ember-bone">
+  <div class="max-w-5xl mx-auto px-6">
+    <p class="eyebrow text-ember-copper mb-4">What you see on the map</p>
+    <h2 class="display text-3xl md:text-5xl text-ember-dark mb-10 max-w-3xl">
+      Three dot colors. One status at a glance.
+    </h2>
+    <div class="space-y-6 max-w-3xl">
+      <div class="cap-card flex items-start gap-5">
+        <span style="display:inline-block; width:14px; height:14px; border-radius:999px; background:#3A4A3E; margin-top:0.4rem; flex-shrink:0;"></span>
+        <div>
+          <h3 class="font-semibold text-ember-dark text-lg mb-1">Green · live</h3>
+          <p class="text-ember-ink/80 text-sm leading-relaxed">In range right now. Their position updates every few seconds. You can call, text, or navigate to them in real time.</p>
+        </div>
+      </div>
+      <div class="cap-card flex items-start gap-5">
+        <span style="display:inline-block; width:14px; height:14px; border-radius:999px; background:#8C8275; margin-top:0.4rem; flex-shrink:0;"></span>
+        <div>
+          <h3 class="font-semibold text-ember-dark text-lg mb-1">Grey · last seen</h3>
+          <p class="text-ember-ink/80 text-sm leading-relaxed">Out of direct range. Pin shows the position when they were last in the mesh, plus how long ago. Tap to set navigation to that pin.</p>
+        </div>
+      </div>
+      <div class="cap-card flex items-start gap-5">
+        <span style="display:inline-block; width:14px; height:14px; border-radius:999px; background:#E85D2C; margin-top:0.4rem; flex-shrink:0;"></span>
+        <div>
+          <h3 class="font-semibold text-ember-dark text-lg mb-1">Copper · approaching</h3>
+          <p class="text-ember-ink/80 text-sm leading-relaxed">A grey pin re-entering the mesh. The system signals an inbound rendezvous. Useful when you've split up and want to know the moment your party is back in earshot.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 md:py-24 bg-ember-paper">
+  <div class="max-w-5xl mx-auto px-6">
+    <p class="eyebrow text-ember-copper mb-4">What it feels like</p>
+    <h2 class="display text-3xl md:text-5xl text-ember-dark mb-8 max-w-3xl">
+      "She's 320 m / 1,050 ft east, closing fast."
+    </h2>
+    <div class="space-y-6 text-lg text-ember-ink/85 leading-relaxed max-w-3xl">
+      <p>
+        Day two of a four-day backcountry trip. Your wife went ahead to set up camp; you stayed back to filter water. You glance at the map. Her dot is green — 84 m / 275 ft northeast, live. You can call out, you can text, you can walk straight to her if you want.
+      </p>
+      <p>
+        Two hours later you're moving along separate game trails. Her dot turns grey at the edge of the map — last seen 12 minutes ago, 940 m / 0.58 mi northeast, heading NE. You're not worried; the pin tells you where she was and where she was going.
+      </p>
+      <p>
+        Later still, the dot pulses copper. She's coming back into range. By the time you look up from the map, you can hear her boots on the gravel.
+      </p>
+      <p class="text-ember-ink/95 font-semibold">
+        That's the entire feature. No accounts. No tracking server. No subscription. Just the answer to "where are they right now" when nobody else can give it to you.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 md:py-24 bg-ember-bone">
+  <div class="max-w-5xl mx-auto px-6">
+    <p class="eyebrow text-ember-copper mb-4">Privacy by architecture</p>
+    <h2 class="display text-3xl md:text-5xl text-ember-dark mb-6 max-w-3xl">
+      Your location lives on your phone, and on the phones you've shared it with. Nowhere else.
+    </h2>
+    <p class="text-lg text-ember-ink/85 leading-relaxed max-w-3xl mb-4">
+      There is no Sovrinte server collecting positions. There is no account associating your dot with a name in a database somewhere. The mesh is peer-to-peer by definition — your phone tells the phones around it where you are, and that information stays in the radio bubble those phones share.
+    </p>
+    <p class="text-lg text-ember-ink/85 leading-relaxed max-w-3xl">
+      When the party comes home and reconnects to the internet, nothing about the trip is uploaded unless you choose to. Memory that doesn't get monetized.
+    </p>
+  </div>
+</section>
+
+<section class="py-16 md:py-24 bg-ember-dark text-ember-bone text-center">
+  <div class="max-w-3xl mx-auto px-6">
+    <p class="display text-4xl md:text-6xl mb-6">The grid is the people.</p>
+    <p class="text-ember-bone/85 text-lg mb-10">No towers. No accounts. No "share your location" to a server. Just the radio bubble you and your party stand inside.</p>
+    <a href="/#price" class="inline-block bg-ember-copper hover:bg-ember-ember text-ember-bone px-10 py-5 text-lg font-semibold tracking-wide transition rounded-sm">
+      Pre-order Sovrinte — $149
+    </a>
+    <p class="mt-6 text-ember-stone text-sm"><a href="/docs/" class="hover:text-ember-bone transition">← Back to docs</a></p>
+  </div>
+</section>
+
+<footer class="bg-ember-dark text-ember-bone/60 py-8 text-sm">
+  <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between gap-3">
+    <div>Sovrinte <span class="text-ember-copper">(sov-rin-tee)</span> · Synthetic intelligence for nomads · Built for offline.</div>
+    <div class="space-x-6">
+      <a href="/" class="hover:text-ember-copper transition">Home</a>
+      <a href="/docs/" class="hover:text-ember-copper transition">Docs</a>
+      <a href="mailto:hello@sovrinte.ai" class="hover:text-ember-copper transition">Contact</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

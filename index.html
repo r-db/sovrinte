@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sovrinte — Synthetic intelligence that runs on your phone, not the cloud.</title>
+<meta name="description" content="Sovrinte is an offline AI partner, survival database, mesh communicator, and navigator that runs on your phone. No subscription. No surveillance. $149 once, lifetime updates." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ember: {
+            dark:   '#1A1410',
+            ink:    '#231C18',
+            bone:   '#F5EFE6',
+            paper:  '#EFE6D8',
+            copper: '#E85D2C',
+            ember:  '#D44A1F',
+            teal:   '#2C7F8A',
+            moss:   '#3A4A3E',
+            stone:  '#8C8275',
+          }
+        },
+        fontFamily: {
+          display: ['"DM Serif Display"', 'Georgia', 'serif'],
+          sans:    ['"Inter"', 'system-ui', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body {
+    background: #F5EFE6;
+    color: #1A1410;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  /* Defensive: explicit CSS for the custom Tailwind palette in case the CDN
+     JIT doesn't pick up the inline theme config (it doesn't, reliably). */
+  .bg-ember-dark   { background-color: #1A1410 !important; }
+  .bg-ember-ink    { background-color: #231C18 !important; }
+  .bg-ember-bone   { background-color: #F5EFE6 !important; }
+  .bg-ember-paper  { background-color: #EFE6D8 !important; }
+  .bg-ember-copper { background-color: #E85D2C !important; }
+  .bg-ember-ember  { background-color: #D44A1F !important; }
+  .bg-ember-teal   { background-color: #2C7F8A !important; }
+  .bg-ember-moss   { background-color: #3A4A3E !important; }
+  .bg-ember-stone  { background-color: #8C8275 !important; }
+  .text-ember-dark   { color: #1A1410 !important; }
+  .text-ember-ink    { color: #231C18 !important; }
+  .text-ember-bone   { color: #F5EFE6 !important; }
+  .text-ember-paper  { color: #EFE6D8 !important; }
+  .text-ember-copper { color: #E85D2C !important; }
+  .text-ember-teal   { color: #2C7F8A !important; }
+  .text-ember-stone  { color: #8C8275 !important; }
+  .border-ember-dark   { border-color: #1A1410 !important; }
+  .border-ember-bone   { border-color: #F5EFE6 !important; }
+  /* Opacity-modifier flavors */
+  .bg-ember-bone\/85 { background-color: rgba(245,239,230,0.85) !important; }
+  .bg-ember-dark\/55 { background-color: rgba(26,20,16,0.55) !important; }
+  .bg-ember-dark\/80 { background-color: rgba(26,20,16,0.80) !important; }
+  .text-ember-bone\/60 { color: rgba(245,239,230,0.60) !important; }
+  .text-ember-bone\/80 { color: rgba(245,239,230,0.80) !important; }
+  .text-ember-bone\/85 { color: rgba(245,239,230,0.85) !important; }
+  .text-ember-bone\/90 { color: rgba(245,239,230,0.90) !important; }
+  .text-ember-ink\/80 { color: rgba(35,28,24,0.80) !important; }
+  .text-ember-ink\/85 { color: rgba(35,28,24,0.85) !important; }
+  .text-ember-dark\/10 { color: rgba(26,20,16,0.10) !important; }
+  .text-ember-dark\/80 { color: rgba(26,20,16,0.80) !important; }
+  .border-ember-dark\/10 { border-color: rgba(26,20,16,0.10) !important; }
+  .border-ember-dark\/15 { border-color: rgba(26,20,16,0.15) !important; }
+  .border-ember-bone\/15 { border-color: rgba(245,239,230,0.15) !important; }
+  .border-ember-bone\/20 { border-color: rgba(245,239,230,0.20) !important; }
+  .hover\:bg-ember-copper:hover { background-color: #E85D2C !important; }
+  .hover\:bg-ember-ember:hover  { background-color: #D44A1F !important; }
+  .hover\:text-ember-copper:hover { color: #E85D2C !important; }
+  .display { font-family: 'DM Serif Display', Georgia, serif; line-height: 0.95; letter-spacing: -0.02em; }
+  .eyebrow { font-family: 'Inter', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.72rem; }
+  /* Wordmark — Plus Jakarta Sans is the free near-twin of Canva Sans.
+     Heavy 800 weight + tight tracking matches the SOVRINTE mark on the hero artwork. */
+  .wordmark { font-family: 'Plus Jakarta Sans', 'Canva Sans', system-ui, sans-serif; font-weight: 800; letter-spacing: -0.03em; }
+
+  /* Futurist app icon — dark chrome rounded square with copper-glow S.
+     Visual register matches the pod + runner vehicles: depth, highlight, warm accent
+     on cool metallic body. Pure CSS, no asset dependency. */
+  .app-icon {
+    position: relative;
+    width: 168px;
+    height: 168px;
+    border-radius: 38px;
+    background:
+      radial-gradient(at 28% 22%, rgba(255,255,255,0.16), transparent 60%),
+      linear-gradient(145deg, #2C2118 0%, #1A1410 55%, #0E0906 100%);
+    box-shadow:
+      0 30px 70px -18px rgba(0,0,0,0.55),
+      0 10px 30px -10px rgba(232,93,44,0.30),
+      inset 0 1px 0 rgba(255,255,255,0.12),
+      inset 0 -1px 0 rgba(0,0,0,0.45),
+      inset 0 0 0 1px rgba(255,255,255,0.04);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .app-icon::before {
+    content: "";
+    position: absolute; inset: 1px;
+    border-radius: 37px;
+    background: linear-gradient(150deg, rgba(255,255,255,0.07), transparent 38%);
+    pointer-events: none;
+  }
+  .app-icon::after {
+    content: "";
+    position: absolute; left: 50%; bottom: -22px;
+    transform: translateX(-50%);
+    width: 78%; height: 22px;
+    background: radial-gradient(ellipse, rgba(232,93,44,0.30), transparent 70%);
+    filter: blur(8px);
+    pointer-events: none;
+  }
+  .app-icon .glyph {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 5.25rem;          /* ~50% of 168px container — proper app-icon proportion */
+    line-height: 1;
+    letter-spacing: -0.04em;
+    margin-top: -0.05em;          /* optical centering — cap-height sits a hair below box-center */
+    background: linear-gradient(180deg, #F5C8A0 0%, #E85D2C 55%, #B33A0F 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 18px rgba(232,93,44,0.45));
+    position: relative;
+    z-index: 1;
+  }
+  /* Platform pill — small floating badges that scream "mobile app" */
+  .platform-pill {
+    display: inline-flex; align-items: center; gap: 0.45rem;
+    padding: 0.45rem 0.9rem;
+    border: 1px solid rgba(26,20,16,0.18);
+    border-radius: 999px;
+    font-family: 'Inter', sans-serif; font-weight: 500; font-size: 0.78rem;
+    letter-spacing: 0.02em; color: #231C18;
+    background: rgba(245,239,230,0.6);
+    backdrop-filter: blur(8px);
+  }
+  .platform-pill svg { width: 14px; height: 14px; opacity: 0.85; }
+  .ember-grain {
+    background-image:
+      radial-gradient(ellipse at 30% 20%, rgba(232,93,44,0.08), transparent 60%),
+      radial-gradient(ellipse at 80% 80%, rgba(44,127,138,0.06), transparent 60%);
+  }
+  .img-cover { background-size: cover; background-position: center; }
+  .btn-primary {
+    background: #1A1410; color: #F5EFE6; padding: 1rem 1.75rem;
+    font-weight: 600; letter-spacing: 0.02em; border-radius: 2px;
+    transition: background 200ms, transform 200ms;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: #E85D2C; transform: translateY(-1px); }
+  .btn-ghost {
+    background: transparent; color: #1A1410; padding: 1rem 1.75rem;
+    font-weight: 500; border: 1.5px solid #1A1410; border-radius: 2px;
+    transition: background 200ms, color 200ms;
+    display: inline-block;
+  }
+  .btn-ghost:hover { background: #1A1410; color: #F5EFE6; }
+  /* Sovrinte hero imagery — original brand assets */
+  .hero-img       { background-image: url('/img/sovrinte-pod.png'); background-position: center; }
+  .scene-camp     { background-image: url('https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=1600&q=80'); }
+  .scene-mountain { background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1600&q=80'); }
+  .scene-night    { background-image: url('/img/sovrinte-runner.png'); }
+  .scene-trail    { background-image: url('https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=1600&q=80'); }
+</style>
+</head>
+<body class="antialiased">
+
+<nav class="fixed top-0 left-0 right-0 z-50 bg-ember-bone/85 backdrop-blur-md border-b border-ember-dark/10">
+  <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+    <a href="#" class="wordmark text-2xl text-ember-dark">Sovrinte</a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-ember-dark/80">
+      <a href="#what" class="hover:text-ember-copper transition">What it does</a>
+      <a href="/docs/" class="hover:text-ember-copper transition">Docs</a>
+      <a href="#price" class="hover:text-ember-copper transition">Price</a>
+      <a href="#faq" class="hover:text-ember-copper transition">FAQ</a>
+      <a href="#price" class="btn-primary !py-2 !px-4 text-sm">Pre-order — $149</a>
+    </div>
+    <a href="#price" class="md:hidden btn-primary !py-2 !px-4 text-sm">$149</a>
+  </div>
+</nav>
+
+<section class="mt-[72px] grid md:grid-cols-2 ember-grain" style="min-height: calc(100vh - 72px);">
+  <!-- Left: text content, constrained, vertically centered -->
+  <div class="px-6 md:px-12 lg:px-16 xl:px-20 py-16 md:py-12 flex flex-col justify-center order-2 md:order-1">
+    <div class="max-w-xl md:ml-auto md:mr-8 lg:mr-12 xl:mr-16">
+      <p class="eyebrow text-ember-copper mb-6">Synthetic intelligence for nomads</p>
+      <h1 class="display text-5xl md:text-6xl lg:text-7xl text-ember-dark mb-8">
+        For people who refuse to outsource their judgment.
+      </h1>
+      <p class="text-lg md:text-xl text-ember-ink/80 mb-10 leading-relaxed">
+        Sovrinte is an AI partner that runs on your phone. Not the cloud. Not their server. Yours. It works when the signal stops and stays yours when the signal returns.
+      </p>
+      <div class="flex flex-wrap gap-4 items-center">
+        <a href="#price" class="btn-primary">Pre-order — $149</a>
+        <a href="/docs/the-app.html" class="btn-ghost">See the app</a>
+      </div>
+      <p class="mt-6 text-sm text-ember-stone">One-time payment. Lifetime updates. No subscription, ever.</p>
+    </div>
+  </div>
+  <!-- Right: full-bleed video — top of nav to bottom + right of viewport -->
+  <div class="relative bg-ember-dark order-1 md:order-2 min-h-[55vh] md:min-h-0">
+    <video
+      autoplay muted loop playsinline preload="metadata"
+      poster="/img/sovrinte-pod.png"
+      aria-label="Sovrinte product — vehicle racing across desert dunes"
+      class="absolute inset-0 w-full h-full object-cover"
+    >
+      <source src="/img/sovrinte-hero.mp4" type="video/mp4" />
+      <img src="/img/sovrinte-pod.png" alt="Sovrinte" class="absolute inset-0 w-full h-full object-cover" />
+    </video>
+  </div>
+</section>
+
+<section class="bg-ember-teal text-ember-bone py-20 md:py-32">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="display text-4xl md:text-6xl mb-6">
+      The internet is not the future.<br/>You are.
+    </h2>
+    <p class="text-lg md:text-xl max-w-2xl text-ember-bone/85 leading-relaxed">
+      Every year you outsource one more piece of your competence to infrastructure you don't control. At some point that stopped feeling like progress. Sovrinte is built for the part of you that noticed.
+    </p>
+  </div>
+</section>
+
+<!-- ============================== APP ICON / MOBILE ANCHOR ============================== -->
+<section class="py-24 md:py-32 bg-ember-bone text-center">
+  <div class="max-w-3xl mx-auto px-6">
+    <p class="eyebrow text-ember-copper mb-10">Coming to your phone</p>
+    <div class="app-icon mx-auto mb-12">
+      <span class="glyph" aria-hidden="true">S</span>
+    </div>
+    <h3 class="wordmark text-3xl md:text-5xl text-ember-dark mb-3">
+      The Sovrinte app.
+    </h3>
+    <p class="text-sm md:text-base text-ember-stone italic mb-6">
+      pronounced <span class="font-semibold not-italic text-ember-copper">sov · rin · tee</span> — like <em>sovereignty</em>, unfinished on purpose
+    </p>
+    <p class="text-lg md:text-xl text-ember-ink/80 leading-relaxed max-w-xl mx-auto mb-8">
+      Installs once. Runs forever. No network required after the first download.
+    </p>
+    <div class="flex flex-wrap items-center justify-center gap-3">
+      <span class="platform-pill">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 12.55c-.02-2.27 1.85-3.36 1.93-3.41-1.06-1.55-2.7-1.76-3.28-1.78-1.4-.14-2.73.82-3.45.82-.71 0-1.81-.8-2.97-.78-1.53.02-2.94.89-3.73 2.26-1.59 2.76-.41 6.85 1.14 9.09.76 1.1 1.66 2.33 2.84 2.29 1.14-.05 1.57-.74 2.95-.74 1.37 0 1.76.74 2.97.71 1.23-.02 2-1.11 2.75-2.22.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.42-3.66zM14.93 5.34c.62-.76 1.04-1.81.92-2.86-.89.04-1.97.6-2.62 1.35-.58.67-1.09 1.74-.95 2.77.99.08 2.01-.5 2.65-1.26z"/></svg>
+        iPhone 14+ · mesh ~100–250 m
+      </span>
+      <span class="platform-pill">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 11.48l1.84-3.18a.38.38 0 00-.66-.38l-1.86 3.22A11.4 11.4 0 0012 9.5a11.4 11.4 0 00-4.92 1.64L5.22 7.92a.38.38 0 00-.66.38l1.84 3.18C3.13 13.18 1 16.04 1 19.5h22c0-3.46-2.13-6.32-5.4-8.02zM7 17.5a1 1 0 110-2 1 1 0 010 2zm10 0a1 1 0 110-2 1 1 0 010 2z"/></svg>
+        Pixel 7+ · mesh ~100–250 m
+      </span>
+      <span class="platform-pill">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 11.48l1.84-3.18a.38.38 0 00-.66-.38l-1.86 3.22A11.4 11.4 0 0012 9.5a11.4 11.4 0 00-4.92 1.64L5.22 7.92a.38.38 0 00-.66.38l1.84 3.18C3.13 13.18 1 16.04 1 19.5h22c0-3.46-2.13-6.32-5.4-8.02zM7 17.5a1 1 0 110-2 1 1 0 010 2zm10 0a1 1 0 110-2 1 1 0 010 2z"/></svg>
+        Galaxy S23+ · mesh ~100–300 m
+      </span>
+    </div>
+    <p class="mt-6 text-xs text-ember-stone">
+      Open line-of-sight estimates. Mesh relay through additional Sovrinte phones extends practical reach to 1–2 km. <a href="/docs/comms.html" class="text-ember-copper underline">Full range table →</a>
+    </p>
+    <p class="mt-3 text-xs text-ember-stone">iOS ships first. Android in version 2.</p>
+    <p class="mt-8 text-sm text-ember-stone">
+      Sovrinte runs entirely on your device. The intelligence and the database live on your phone — first download is the last network call you'll need.
+    </p>
+  </div>
+</section>
+
+<section id="what" class="py-24 md:py-32 bg-ember-bone">
+  <div class="max-w-7xl mx-auto px-6">
+    <p class="eyebrow text-ember-copper mb-6">What Sovrinte does</p>
+    <h2 class="display text-4xl md:text-6xl text-ember-dark mb-16 max-w-3xl">
+      Five capabilities. Zero dependencies on someone else's server.
+    </h2>
+
+    <div class="grid md:grid-cols-2 gap-12 md:gap-16">
+      <div class="border-t border-ember-dark/15 pt-8">
+        <p class="eyebrow text-ember-teal mb-3">01 — Partner</p>
+        <h3 class="display text-3xl text-ember-dark mb-4">An AI that lives on your phone</h3>
+        <p class="text-ember-ink/80 leading-relaxed">
+          A purpose-built intelligence that lives on your device. No metering, no surveillance, no monthly bill. You ask, it answers — in the field, on the water, under the stars, with no bars of signal.
+        </p>
+      </div>
+      <div class="border-t border-ember-dark/15 pt-8">
+        <p class="eyebrow text-ember-teal mb-3">02 — Database</p>
+        <h3 class="display text-3xl text-ember-dark mb-4">A library that fits in your pocket</h3>
+        <p class="text-ember-ink/80 leading-relaxed">
+          Edible plants. Water purification. Shelter, fire, tools. Sailing basics. Navigation by sun and stars. Fishing and hunting — what's safe to eat, what isn't, what'll kill you. Curated, offline, ready before you need it.
+        </p>
+      </div>
+      <div class="border-t border-ember-dark/15 pt-8">
+        <p class="eyebrow text-ember-teal mb-3">03 — Mesh comms</p>
+        <h3 class="display text-3xl text-ember-dark mb-4">Talk to your people when there's no signal</h3>
+        <p class="text-ember-ink/80 leading-relaxed">
+          Text and voice over Bluetooth and your phone's radio. Walkie-talkie when you're near. Store the last known location of everyone you care about, and navigate to it. When two Sovrinte units come into range, they find each other automatically.
+        </p>
+      </div>
+      <div class="border-t border-ember-dark/15 pt-8">
+        <p class="eyebrow text-ember-teal mb-3">04 — Navigation</p>
+        <h3 class="display text-3xl text-ember-dark mb-4">Where you are. Where they were. How to get there.</h3>
+        <p class="text-ember-ink/80 leading-relaxed">
+          Offline maps. Sun-and-star navigation taught and assisted. Your route logged. Last-seen pins for every person in your party. The day the network goes down is the day Sovrinte is exactly the same as it was the day before.
+        </p>
+      </div>
+      <div class="border-t border-ember-dark/15 pt-8 md:col-span-2">
+        <p class="eyebrow text-ember-teal mb-3">05 — Journal</p>
+        <h3 class="display text-3xl text-ember-dark mb-4">The adventure remembered, on your terms</h3>
+        <p class="text-ember-ink/80 leading-relaxed max-w-3xl">
+          Record what happened, where, with whom. Voice notes, photos, location. Share with your team when you reconnect — to each other or to the network. Your journal stays on your device unless you choose to send it. Memory that doesn't get monetized.
+        </p>
+      </div>
+    </div>
+
+    <p class="mt-16 text-sm text-ember-stone max-w-2xl">
+      Coming next: on-device vision. Point your camera at a plant, an animal, a sail, a wound. Get an answer offline.
+    </p>
+  </div>
+</section>
+
+<section id="how" class="relative py-32 md:py-48 img-cover scene-mountain text-ember-bone">
+  <div class="absolute inset-0 bg-ember-dark/55"></div>
+  <div class="relative max-w-5xl mx-auto px-6">
+    <p class="eyebrow text-ember-copper mb-6">How it feels</p>
+    <h2 class="display text-4xl md:text-6xl mb-8 max-w-3xl">
+      Capable without permission.
+    </h2>
+    <p class="text-lg md:text-2xl max-w-2xl text-ember-bone/90 leading-relaxed">
+      You walk out of the cell tower's reach and your phone stops being a window into someone else's economy. It becomes a tool again. A library, a compass, a radio, a partner. The kind of thing you should have been carrying all along.
+    </p>
+  </div>
+</section>
+
+<section class="py-24 md:py-32 bg-ember-paper">
+  <div class="max-w-5xl mx-auto px-6">
+    <p class="eyebrow text-ember-copper mb-6">Who Sovrinte is for</p>
+    <h2 class="display text-3xl md:text-5xl text-ember-dark mb-10 leading-tight">
+      One product, ten lives, one reason.
+    </h2>
+    <div class="text-lg md:text-xl text-ember-ink/85 leading-relaxed space-y-6 max-w-3xl">
+      <p>
+        The van lifer who works from places without cell towers. The bluewater sailor a thousand miles from anything. The backcountry hunter who already trusts no signal more than weak signal. The prepper who's been waiting for an honest answer to "what happens when." The parent putting together the family kit. The aid worker, the journalist, the privacy refugee. The hiker. The cruiser. The person who just wants to feel less metered.
+      </p>
+      <p>
+        They walk into the same seminar for slightly different reasons. They all leave with the same thing — the ability to think, navigate, communicate, and decide without asking a server's permission.
+      </p>
+      <p class="display text-2xl md:text-3xl text-ember-dark italic pt-4">
+        Sovrinte is for the kind of person you want to be when the signal stops.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ATMOSPHERIC BREAK — lazy-loaded video, plays only when in viewport -->
+<section class="relative h-[60vh] md:h-[70vh] overflow-hidden bg-ember-dark">
+  <video
+    data-lazy
+    preload="none"
+    poster="/img/sovrinte-runner.png"
+    muted loop playsinline
+    aria-label="Futuristic vehicle cruising desert"
+    class="absolute inset-0 w-full h-full object-cover"
+  >
+    <source data-src="/img/sovrinte-cruise.mp4" type="video/mp4">
+  </video>
+</section>
+
+<section id="price" class="py-24 md:py-32 bg-ember-dark text-ember-bone">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <p class="eyebrow text-ember-copper mb-8">The offer</p>
+    <h2 class="display text-5xl md:text-7xl mb-6">$149. Once.</h2>
+    <p class="text-xl md:text-2xl text-ember-bone/85 mb-3 max-w-2xl mx-auto">
+      Lifetime updates. iOS first, Android after. No subscription, ever.
+    </p>
+    <p class="text-base text-ember-stone mb-12 max-w-xl mx-auto">
+      Ships Q4 2026. If we miss that window, full refund — no questions, no friction.
+    </p>
+    <a href="#" id="pre-order-cta" class="inline-block bg-ember-copper hover:bg-ember-ember text-ember-bone px-10 py-5 text-lg font-semibold tracking-wide transition rounded-sm">
+      Pre-order Sovrinte — $149
+    </a>
+    <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-left max-w-3xl mx-auto">
+      <div class="border-t border-ember-bone/20 pt-5">
+        <p class="eyebrow text-ember-copper mb-2">Yours</p>
+        <p class="text-ember-bone/80 text-sm leading-relaxed">The model runs on your device. The data never leaves unless you send it.</p>
+      </div>
+      <div class="border-t border-ember-bone/20 pt-5">
+        <p class="eyebrow text-ember-copper mb-2">Forever</p>
+        <p class="text-ember-bone/80 text-sm leading-relaxed">You bought it. We update it. You don't pay again. We don't rent your access.</p>
+      </div>
+      <div class="border-t border-ember-bone/20 pt-5">
+        <p class="eyebrow text-ember-copper mb-2">Honest</p>
+        <p class="text-ember-bone/80 text-sm leading-relaxed">If it doesn't ship, you get your money back. If you don't love it, 30-day refund.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="py-24 md:py-32 bg-ember-bone">
+  <div class="max-w-4xl mx-auto px-6">
+    <p class="eyebrow text-ember-copper mb-6">Plain answers</p>
+    <h2 class="display text-4xl md:text-5xl text-ember-dark mb-12">Things you'd ask before paying.</h2>
+    <div class="space-y-10">
+      <div>
+        <h3 class="display text-2xl text-ember-dark mb-3">Does it actually work without internet?</h3>
+        <p class="text-ember-ink/85 leading-relaxed">Yes. That's the whole point. The AI model and the database both live on your device. The first time you open Sovrinte it downloads everything; after that, airplane mode is a feature, not a failure mode.</p>
+      </div>
+      <div>
+        <h3 class="display text-2xl text-ember-dark mb-3">What phone do I need?</h3>
+        <p class="text-ember-ink/85 leading-relaxed">iPhone 14 or newer at launch. Sovrinte is tuned for on-device acceleration — older devices technically work, newer ones feel instant. Android (Pixel 7+, Galaxy S23+) follows in version 2.</p>
+      </div>
+      <div>
+        <h3 class="display text-2xl text-ember-dark mb-3">Is the mesh comms regulated?</h3>
+        <p class="text-ember-ink/85 leading-relaxed">Bluetooth mesh works anywhere. Radio modes operate in license-free bands. We'll publish the full spec in the docs so you can verify against your local regulations before relying on it for anything critical.</p>
+      </div>
+      <div>
+        <h3 class="display text-2xl text-ember-dark mb-3">Will it replace my satellite messenger?</h3>
+        <p class="text-ember-ink/85 leading-relaxed">No. A satellite messenger reaches places Sovrinte can't — true backcountry SOS belongs to inReach, ZOLEO, Bivy Stick, that class of device. Sovrinte does what those can't: a partner for thinking, deciding, and identifying, plus mesh comms with your nearby team. Carry both.</p>
+      </div>
+      <div>
+        <h3 class="display text-2xl text-ember-dark mb-3">What about my data?</h3>
+        <p class="text-ember-ink/85 leading-relaxed">It's on your phone. We don't have a copy. We don't want a copy. If you opt into telemetry (you'll be asked, default off) we receive crash reports and nothing else.</p>
+      </div>
+      <div>
+        <h3 class="display text-2xl text-ember-dark mb-3">Who built this?</h3>
+        <p class="text-ember-ink/85 leading-relaxed">A small team that already builds AI persistence infrastructure for production use. The same engineering discipline that keeps a synthetic intelligence accumulating memory across sessions is what makes Sovrinte run reliably without a network. We'll publish the docs that explain what — not how — once the first pre-orders close.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-ember-dark text-ember-bone py-20 md:py-28 img-cover scene-trail relative">
+  <div class="absolute inset-0 bg-ember-dark/80"></div>
+  <div class="relative max-w-5xl mx-auto px-6 text-center">
+    <p class="display text-4xl md:text-6xl mb-3">Don't die in a cubicle.</p>
+    <p class="display text-5xl md:text-7xl text-ember-copper mb-12">See you out there.</p>
+    <a href="#price" class="btn-primary !bg-ember-copper hover:!bg-ember-ember !text-ember-bone">Pre-order Sovrinte — $149</a>
+    <div class="mt-20 pt-8 border-t border-ember-bone/15 text-sm text-ember-bone/60 flex flex-col md:flex-row justify-between gap-4">
+      <div>Sovrinte <span class="text-ember-copper">(sov-rin-tee)</span> &middot; Synthetic intelligence for nomads &middot; Built for offline.</div>
+      <div class="space-x-6">
+        <a href="#" class="hover:text-ember-copper transition">Docs</a>
+        <a href="#" class="hover:text-ember-copper transition">Press</a>
+        <a href="mailto:hello@ember.ai" class="hover:text-ember-copper transition">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Pre-order CTA placeholder (Stripe in v1.1)
+  document.getElementById('pre-order-cta').addEventListener('click', (e) => {
+    e.preventDefault();
+    alert('Pre-order flow coming next. v1 landing — wire Stripe in v1.1.');
+  });
+
+  // Lazy-load + viewport-play any <video data-lazy>.
+  // Bytes don't transfer until first intersection. Playback stops when offscreen.
+  (function () {
+    const lazyVideos = document.querySelectorAll('video[data-lazy]');
+    if (!('IntersectionObserver' in window) || lazyVideos.length === 0) {
+      // No IO support — fall back to immediate src hydration + autoplay
+      lazyVideos.forEach(v => {
+        v.querySelectorAll('source[data-src]').forEach(s => { s.src = s.dataset.src; });
+        v.load();
+        v.play().catch(() => {});
+      });
+      return;
+    }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const v = entry.target;
+        if (entry.isIntersecting) {
+          // First-intersection: hydrate the source if not already
+          const src = v.querySelector('source[data-src]');
+          if (src && !src.src) {
+            src.src = src.dataset.src;
+            v.load();
+          }
+          v.play().catch(() => { /* autoplay-policy denial is fine; user gesture will retry */ });
+        } else {
+          if (!v.paused) v.pause();
+        }
+      });
+    }, { threshold: 0.25, rootMargin: '0px 0px -10% 0px' });
+    lazyVideos.forEach(v => io.observe(v));
+  })();
+</script>
+</body>
+</html>
