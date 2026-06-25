@@ -4,5 +4,11 @@
   "headers": [
     { "source": "/css/(.*)",  "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
     { "source": "/img/(.*)",  "headers": [{ "key": "Cache-Control", "value": "public, max-age=2592000" }] }
+  ],
+  "redirects": [
+    { "source": "/docs",             "destination": "/app/",       "permanent": true },
+    { "source": "/docs/the-app.html","destination": "/app/tour",   "permanent": true },
+    { "source": "/docs/the-app",     "destination": "/app/tour",   "permanent": true },
+    { "source": "/docs/:path*",      "destination": "/app/:path*", "permanent": true }
   ]
 }
