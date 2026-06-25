@@ -41,7 +41,8 @@
 <style>
   html {
     scroll-behavior: smooth;
-    background: linear-gradient(to bottom, #F5EFE6 50%, #1A1410 50%) fixed;
+    overscroll-behavior: none;
+    background-color: #F5EFE6;
   }
   body {
     background: #F5EFE6;
@@ -49,6 +50,7 @@
     font-family: 'Inter', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    overscroll-behavior: none;
   }
   /* Defensive: explicit CSS for the custom Tailwind palette in case the CDN
      JIT doesn't pick up the inline theme config (it doesn't, reliably). */

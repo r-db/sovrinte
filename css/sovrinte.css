@@ -4,10 +4,13 @@
 
 html {
   scroll-behavior: smooth;
-  /* Overscroll fix — top half bone (matches hero), bottom half dark (matches footer).
-     Fixed attachment anchors the gradient to the viewport so bouncing past
-     either end of the page shows the right brand color, never white. */
-  background: linear-gradient(to bottom, #F5EFE6 50%, #1A1410 50%) fixed;
+  /* Kill the overscroll bounce on Mac/iOS/Chrome.
+     The gradient-on-html approach loses to CSS background propagation when body
+     also has a bg — body wins the canvas, gradient never shows. Disabling the
+     bounce itself is the reliable fix: user can't scroll past either end, so
+     no white ever shows. Native rubber-band feel sacrificed for brand integrity. */
+  overscroll-behavior: none;
+  background-color: #F5EFE6;
 }
 body {
   background: #F5EFE6;
@@ -15,6 +18,7 @@ body {
   font-family: 'Inter', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  overscroll-behavior: none;
 }
 
 /* Brand palette — explicit CSS rules for custom Tailwind class names */
