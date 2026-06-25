@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="body" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"  stop-color="#2C2118"/>
+      <stop offset="55%" stop-color="#1A1410"/>
+      <stop offset="100%" stop-color="#0E0906"/>
+    </linearGradient>
+    <radialGradient id="hi" cx="28%" cy="22%" r="60%">
+      <stop offset="0%"  stop-color="#ffffff" stop-opacity="0.18"/>
+      <stop offset="60%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="glyph" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#F5C8A0"/>
+      <stop offset="55%" stop-color="#E85D2C"/>
+      <stop offset="100%" stop-color="#B33A0F"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="1.2"/>
+    </filter>
+  </defs>
+  <!-- Body: dark chrome rounded square -->
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#body)"/>
+  <!-- Top-left highlight -->
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#hi)"/>
+  <!-- Glow behind glyph -->
+  <text x="32" y="46" font-family="'Plus Jakarta Sans', system-ui, sans-serif"
+        font-weight="800" font-size="44" text-anchor="middle"
+        fill="#E85D2C" opacity="0.55" filter="url(#glow)" letter-spacing="-2">S</text>
+  <!-- Glyph: copper-gradient S -->
+  <text x="32" y="46" font-family="'Plus Jakarta Sans', system-ui, sans-serif"
+        font-weight="800" font-size="44" text-anchor="middle"
+        fill="url(#glyph)" letter-spacing="-2">S</text>
+</svg>

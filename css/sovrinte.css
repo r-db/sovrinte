@@ -2,7 +2,13 @@
    Custom CSS rules for the brand palette (Tailwind CDN JIT doesn't pick up
    the inline theme config reliably; this is the source of truth for color). */
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  /* Overscroll fix — top half bone (matches hero), bottom half dark (matches footer).
+     Fixed attachment anchors the gradient to the viewport so bouncing past
+     either end of the page shows the right brand color, never white. */
+  background: linear-gradient(to bottom, #F5EFE6 50%, #1A1410 50%) fixed;
+}
 body {
   background: #F5EFE6;
   color: #1A1410;
